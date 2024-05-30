@@ -1,7 +1,8 @@
 ---
 title: Packaging zlib 1.2.13 for vcpkg
 description: Learn how to package zlib from the upstream source release in vcpkg.
-ms.date: 11/30/2022
+ms.date: 01/10/2024
+ms.topic: tutorial
 ---
 
 # Packaging Archive Files Example: zlib
@@ -79,13 +80,13 @@ At this point, it is a matter of reading the error messages and log files while 
 
 ## Suggested example portfiles
 
-In the `ports/` directory are many libraries that can be used as examples, including many that are not based on CMake.
+In the [`ports/`](https://github.com/Microsoft/vcpkg/tree/master/ports) directory are many libraries that can be used as examples, including many that are not based on CMake.
 
 - Header only libraries
   - rapidjson
   - range-v3
 - MSBuild-based
-  - mpg123
+  - chakracore
 - Non-CMake, custom buildsystem
   - openssl
   - ffmpeg

@@ -1,7 +1,8 @@
 ---
 title: Packaging libogg for vcpkg
-description: Learn how to package the libogg GitHub Repo in vcpkg.
-ms.date: 11/30/2022
+description: Learn how to package the libogg GitHub repo in vcpkg.
+ms.date: 01/10/2024
+ms.topic: tutorial
 ---
 # Packaging GitHub repos example: libogg
 
@@ -57,7 +58,7 @@ In the [`ports/`](https://github.com/Microsoft/vcpkg/tree/master/ports) director
   - rapidjson
   - range-v3
 - MSBuild-based
-  - mpg123
+  - chakracore
 - Non-CMake, custom buildsystem
   - openssl
   - ffmpeg

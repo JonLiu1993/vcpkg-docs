@@ -1,7 +1,7 @@
 ---
 title: vcpkg_from_bitbucket
 description: Learn how to use vcpkg_from_bitbucket.
-ms.date: 11/30/2022
+ms.date: 01/10/2024
 ---
 # vcpkg_from_bitbucket
 
@@ -12,8 +12,8 @@ Download and extract a project from Bitbucket.
 ```cmake
 vcpkg_from_bitbucket(
     OUT_SOURCE_PATH <SOURCE_PATH>
-    REPO <Microsoft/cpprestsdk>
-    [REF <v2.0.0>]
+    REPO <blaze-lib/blaze>
+    [REF <v3.8.1>]
     [SHA512 <45d0d7f8cc350...>]
     [HEAD_REF <master>]
     [PATCHES <patch1.patch> <patch2.patch>...]
@@ -23,25 +23,26 @@ vcpkg_from_bitbucket(
 ## Parameters
 
 ### OUT_SOURCE_PATH
+
 Specifies the out-variable that will contain the extracted location.
 
 This should be set to `SOURCE_PATH` by convention.
 
 ### REPO
 
-The organization or user and repository on GitHub.
+The organization or user and repository on Bitbucket.
 
 ### REF
 
 A stable git commit-ish (ideally a tag) that will not change contents. **This should not be a branch.**
 
-For repositories without official releases, this can be set to the full commit id of the current latest master.
+For repositories without official releases, this can be set to the full commit id of the current latest master. `vcpkg_from_bitbucket()` will download a stable snapshot of the commit without any history information at `https://bitbucket.com/<REPO>/get/<REF>.tar.gz`.
 
 If `REF` is specified, `SHA512` must also be specified.
 
 ### SHA512
 
-The SHA512 hash that should match the archive (https://bitbucket.com/${REPO}/get/${REF}.tar.gz).
+The SHA512 hash of the source archive.
 
 This is most easily determined by first setting it to `0`, then trying to build the port. The error message will contain the full hash, which can be copied back into the portfile.
 
@@ -70,4 +71,3 @@ This exports the `VCPKG_HEAD_VERSION` variable during head builds.
 ## Source
 
 [scripts/cmake/vcpkg\_from\_bitbucket.cmake](https://github.com/Microsoft/vcpkg/blob/master/scripts/cmake/vcpkg_from_bitbucket.cmake)
-

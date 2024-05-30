@@ -1,11 +1,24 @@
 ---
 title: vcpkg_from_git
 description: Learn how to use vcpkg_from_git.
-ms.date: 11/30/2022
+author: vicroms
+ms.author: viromer
+ms.topic: reference
+ms.date: 01/10/2024
 ---
 # vcpkg_from_git
 
-Download and extract a project from git
+Download and extract a project from git.
+
+This helper reuses `git` CLI credentials. See [Authentication](../../users/authentication.md) to
+configure credentials for your private git hosts.
+
+If the git repo is hosted on BitBucket, on GitHub, or in GitLab, their specific functions should
+be used rather than this function:
+
+* [`vcpkg_from_bitbucket`](vcpkg_from_bitbucket.md)
+* [`vcpkg_from_github`](vcpkg_from_github.md)
+* [`vcpkg_from_gitlab`](vcpkg_from_gitlab.md)
 
 ## Usage
 
@@ -16,13 +29,14 @@ vcpkg_from_git(
     REF <59f7335e4d...>
     [HEAD_REF <ref>]
     [PATCHES <patch1.patch> <patch2.patch>...]
-    [LFS]
+    [LFS [<url>]]
 )
 ```
 
 ## Parameters
 
 ### OUT_SOURCE_PATH
+
 Specifies the out-variable that will contain the extracted location.
 
 This should be set to `SOURCE_PATH` by convention.
@@ -54,6 +68,7 @@ A list of patches to be applied to the extracted sources.
 Relative paths are based on the port directory.
 
 ### LFS
+
 _Added in vcpkg version 2022.11.14_
 
 Enable fetching files stored using Git LFS.
@@ -61,6 +76,10 @@ Only files pointed to by `REF` are fetched.
 
 This makes Git LFS mandatory for the port.
 It's a fatal error if the extension is not installed.
+
+_Added in vcpkg version 2023.01.23_
+
+If specified, `<url>` will be used instead of the original git URL for LFS.
 
 ## Notes
 
@@ -73,4 +92,3 @@ It's a fatal error if the extension is not installed.
 ## Source
 
 [scripts/cmake/vcpkg\_from\_git.cmake](https://github.com/Microsoft/vcpkg/blob/master/scripts/cmake/vcpkg_from_git.cmake)
-

@@ -1,7 +1,8 @@
 ---
 title: Environment variables
 description: Use environment variables to control how vcpkg works and where it looks for files.
-ms.date: 11/30/2022
+ms.date: 01/10/2024
+ms.topic: reference
 ---
 # Environment variables
 
@@ -55,7 +56,7 @@ This environment variable allows users to add directories to search for triplets
 
 List paths to overlays using the platform dependent PATH separator (Windows `;`, others `:`)
 
-See [Example: overlay triplets](examples/overlay-triplets-linux-dynamic.md) for an example.
+See [Example: overlay triplets](../users/examples/overlay-triplets-linux-dynamic.md) for an example.
 
 ## VCPKG_FORCE_SYSTEM_BINARIES
 
@@ -89,16 +90,25 @@ This environment variable adds or removes binary sources. See [Binary Caching][]
 
 ## VCPKG_NUGET_REPOSITORY
 
-This environment variable changes the metadata of produced NuGet packages. See [Binary Caching](binarycaching.md#nuget) for more details.
+This environment variable changes the metadata of produced NuGet packages. See [Binary Caching](../reference/binarycaching.md#nuget) for more details.
 
 ## VCPKG_USE_NUGET_CACHE
 
-This environment variable allows using NuGet's cache for every nuget-based binary source. See [Binary Caching](binarycaching.md#nuget) for more details.
+This environment variable allows using NuGet's cache for every nuget-based binary source. See [Binary Caching](../reference/binarycaching.md#nuget) for more details.
+
+## X_VCPKG_NUGET_PREFIX
+
+Adds a prefix to the name of all the binary packages pushed or restored from
+[NuGet binary caches](../reference/binarycaching.md#nuget).
+
+For example, when `X_VCPKG_NUGET_PREFIX` is set to `vcpkg_demo-` the
+`zlib_x64-windows.1.2.13-vcpkg8918746ce8b60474e5ebe68e53355fa70eb05119be913a1d1dc0b930b3b7b6e8.nupkg`
+binary package becomes
+`vcpkg_demo-zlib_x64-windows.1.2.13-vcpkg8918746ce8b60474e5ebe68e53355fa70eb05119be913a1d1dc0b930b3b7b6e8.nupkg`.
 
 ## X_VCPKG_ASSET_SOURCES
 
-> [!NOTE]
-> This feature is experimental and may change or be removed at any time.
+[!INCLUDE [experimental](../../includes/experimental.md)]
 
 This environment variable allows using a private mirror for all SHA512-tagged assets. See [Asset Caching](assetcaching.md) for more details.
 
@@ -106,4 +116,19 @@ This environment variable allows using a private mirror for all SHA512-tagged as
 
 Setting `VCPKG_NO_CI` disables vcpkg's CI environment detection heuristics.
 
-[Binary Caching]: binarycaching.md
+[Binary Caching]: ../reference/binarycaching.md
+
+## VSLANG
+
+This environment variable sets the language vcpkg uses to display messages. It should be set to one of the 14 supported LCIDs (locale identifier, 4-byte value corresponding to a language).
+
+For example: 1033 corresponds to the English (US) language.
+For a full list of supported LCIDs see [Localization](https://github.com/microsoft/vcpkg-tool/blob/main/docs/localization.md).
+
+## ACTIONS_CACHE_URL
+
+This environment variable is the URL to the GitHub Actions cache. See [Binary Caching](../reference/binarycaching.md#gha) for more details.
+
+## ACTIONS_RUNTIME_TOKEN
+
+This environment variable is the access token to the GitHub Actions cache. See [Binary Caching](../reference/binarycaching.md#gha) for more details.

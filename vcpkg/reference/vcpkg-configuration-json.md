@@ -1,17 +1,26 @@
 ---
 title: vcpkg-configuration.json Reference
 description: Reference documentation for the vcpkg-configuration.json file format
-ms.date: 11/30/2022
+ms.date: 01/10/2024
+ms.topic: reference
 ---
 # vcpkg-configuration.json Reference
 
-The `vcpkg-configuration.json` file forms part of a project's [manifest](../users/manifests.md), along with [`vcpkg.json`](vcpkg-json.md). All fields in the `vcpkg-configuration.json` file are only used from the top-level project -- the `vcpkg-configuration.json` files in any dependencies are ignored.
+The `vcpkg-configuration.json` file forms part of a project's
+[manifest](../concepts/manifest-mode.md), along with
+[`vcpkg.json`](vcpkg-json.md). All fields in the `vcpkg-configuration.json` file
+are only used from the top-level project -- the `vcpkg-configuration.json` files
+in any dependencies are ignored.
 
-In [Manifest Mode](../users/manifests.md), `vcpkg-configuration.json` can be in a separate file beside [`vcpkg.json`](vcpkg-json.md) or it can be embedded in the [`"vcpkg-configuration" field`](vcpkg-json.md#vcpkg-configuration).
+In [Manifest Mode](../concepts/manifest-mode.md), `vcpkg-configuration.json` can
+be in a separate file beside [`vcpkg.json`](vcpkg-json.md) or it can be embedded
+in the [`"vcpkg-configuration" field`](vcpkg-json.md#vcpkg-configuration).
 
-In [Classic Mode](../users/classic-mode.md), vcpkg will use the `vcpkg-configuration.json` file in the [root](../commands/common-options.md#vcpkg-root) of the vcpkg instance.
+In [Classic Mode](../concepts/classic-mode.md), vcpkg will use the
+`vcpkg-configuration.json` file in the
+[root](../commands/common-options.md#vcpkg-root) of the vcpkg instance.
 
-For an overview of using registries with vcpkg, see [Using Registries](../users/registries.md).
+For an overview of using registries with vcpkg, see [Using Registries](../consume/git-registries.md).
 
 The latest JSON Schema is available at [https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg-configuration.schema.json](https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg-configuration.schema.json). IDEs with JSON Schema support such as Visual Studio and Visual Studio Code can use this file to provide autocomplete and syntax checking. For most IDEs, you should set `"$schema"` in your `vcpkg-configuration.json` to this URL.
 
@@ -40,6 +49,7 @@ The latest JSON Schema is available at [https://raw.githubusercontent.com/micros
   "overlay-triplets": [ "./my-triplets" ]
 }
 ```
+
 This example adds a private registry, `https://github.com/northwindtraders/vcpkg-registry`, as the source for the libraries `beicode` and `beison`. All other ports are found from an internal mirror of the Curated Catalog hosted at `https://internal/mirror/of/github.com/Microsoft/vcpkg`.
 
 The example also configures custom overlays for ports and triplets that are present in the source code repository.
@@ -157,7 +167,7 @@ Package patterns may contain only lowercase letters, digits, and `-`, with an op
 * `a+` (`+` is not a valid pattern character)
 * `a?` (`?` is not a valid pattern character)
 
-See the [Using Registries documentation](../users/registries.md#package-name-resolution) for more information on how port names are resolved.
+See the [Using Registries documentation](../concepts/package-name-resolution.md) for more information on how port names are resolved.
 
 [Git Registry]: ../maintainers/registries.md#git-registries
 [Filesystem Registry]: ../maintainers/registries.md#filesystem-registries

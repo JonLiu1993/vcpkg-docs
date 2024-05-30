@@ -1,7 +1,7 @@
 ---
 title: vcpkg_cmake_config_fixup
 description: Use vcpkg_cmake_config_fixup to support multiconfig generators.
-ms.date: 11/30/2022
+ms.date: 01/10/2024
 ---
 # vcpkg_cmake_config_fixup
 
@@ -17,6 +17,17 @@ vcpkg_cmake_config_fixup(
     [DO_NOT_DELETE_PARENT_CONFIG_PATH]
     [NO_PREFIX_CORRECTION]
 )
+```
+
+To use this function, you must depend on the helper port `vcpkg-cmake-config`:
+
+```json
+"dependencies": [
+  {
+    "name": "vcpkg-cmake-config",
+    "host": true
+  }
+]
 ```
 
 Additionally corrects common issues with targets, such as absolute paths and incorrectly placed binaries.

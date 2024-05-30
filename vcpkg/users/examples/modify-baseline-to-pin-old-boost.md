@@ -1,7 +1,9 @@
 ---
 title: Selecting Boost Versions as a Set
 description: Learn how to set versions across a library framework like Boost or Qt in vcpkg.
-ms.date: 11/30/2022
+ms.date: 01/10/2024
+ROBOTS: NOINDEX
+is_archived: true
 ---
 # Pin old Boost versions
 
